@@ -1,5 +1,12 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Employee, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'factory' do
+    subject { create :employee }
+
+    it 'created employee' do
+      expect { subject }.to change { Employee.count }.by 1
+    end
+  end
 end
