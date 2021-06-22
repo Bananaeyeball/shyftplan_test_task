@@ -1,24 +1,36 @@
-# README
+# Shyftplan test task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Rails api that serves companies and employees.
+Includes getting records, updating, destroying and creating new ones
 
-Things you may want to cover:
+## Ruby version
+```sh
+ruby-2.7.0
+```
 
-* Ruby version
+## Rails version
+```sh
+Rails 6.1.3.2
+```
 
-* System dependencies
+## System dependencies
+```sh
+  gem 'pg'
+  gem 'fast_jsonapi'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop'
+  gem 'pry-rails'
+```
+## Installation
+```sh
+bundle install
+rails db:create
+rails db:migrate
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run the test suite
+```sh
+rspec .
+rubocop .
+```
