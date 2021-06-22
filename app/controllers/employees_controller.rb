@@ -1,10 +1,18 @@
 # frozen_string_literal: true
+
 class EmployeesController < ApplicationController
-  def index; end
+  def index
+    @resources = action_service.call
+    render_for_index(@resources)
+  end
 
-  def create; end
+  def create
+    status = action_service.call
+    render_status status
+  end
 
-  def update; end
-
-  def destroy; end
+  def destroy
+    status = action_service.call
+    render_status status
+  end
 end

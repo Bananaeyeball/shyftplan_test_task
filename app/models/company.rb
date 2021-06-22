@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Company < ApplicationRecord
   belongs_to :parent_company,
              class_name: 'Company',
@@ -7,7 +8,7 @@ class Company < ApplicationRecord
   has_many :employees, dependent: :destroy
 
   # TODO: rewrite using Arel
-  scope :incomplete, -> {
+  scope :incomplete, lambda {
     sql = <<-SQL
       WITH RECURSIVE company_tree AS (
         SELECT companies.id as top_company_id,
@@ -30,7 +31,7 @@ class Company < ApplicationRecord
     SQL
     results = ActiveRecord::Base.connection.execute(sql)
     ids = results.select { |result| result['employee_count'] < result['required_number'] }
-            .map { |result| result['top_company_id'] }
+                 .map { |result| result['top_company_id'] }
     where(id: ids)
   }
 end

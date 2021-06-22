@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Companies
-  class CreateService
+  class IndexService
     VALID_FILTERS = ['incomplete'].freeze
 
     def initialize(params)
@@ -15,8 +17,8 @@ module Companies
     end
 
     def filter
-      return if params['filter'].blank?
-      return params['filter'] if VALID_FILTERS.include? params['filter']
+      return if @params['filter'].blank?
+      return @params['filter'] if VALID_FILTERS.include? @params['filter']
 
       false
     end
